@@ -1,61 +1,92 @@
-const MESSAGE_CODES = require('../properties/message_code');
-const HTTP_CODES = require('../properties/http_code')
+const HTTP_CODES = require('../properties/http_code');
+const messageService = require('../services/message.service');
 
-const getSuccess = (data) => {
+const getListSuccess = (data) => {
   return {
     body: {
-      data: data
+      data: data,
     },
     status: HTTP_CODES[200],
-    message: {
-      messageCode: MESSAGE_CODES.SUCCESS_001,
-      mesageContent: 'Category list.'
-    }
-  }
-}
+    message: messageService.getListSuccess(),
+  };
+};
 
-const getFail = (mesageContent) => {
+const getOneSuccess = (data) => {
   return {
-    body: [],
-    status: HTTP_CODES[500],
-    message: {
-      messageCode: MESSAGE_CODES.ERROR_001,
-      mesageContent: mesageContent
-    }
-  }
-}
-
-const createSuccess = (categoryName) => {
-  return {
-    body: [],
-    status: HTTP_CODES[201],
-    message: {
-      messageCode: MESSAGE_CODES.SUCCESS_002,
-      mesageContent: `Create category ${categoryName} successfully.`
-    }
-  }
-}
-
-const createFail = (messageContent) => {
-  return {
-    body: [],
-    status: HTTP_CODES[400],
-    message: {
-      messageCode: MESSAGE_CODES.ERROR_002,
-      mesageContent: messageContent
-    }
-  }
-}
+    body: {
+      data: data,
+    },
+    status: HTTP_CODES[200],
+    message: messageService.getOneSuccess(),
+  };
+};
 
 const notFound = () => {
   return {
     body: [],
     status: HTTP_CODES[400],
-    message: {
-      messageCode: MESSAGE_CODES.ERROR_002,
-      mesageContent: messageContent
-    }
-  }
-}
+    message: messageService.notFound(),
+  };
+};
 
-module.exports = { getSuccess, getFail, createSuccess, createFail }
+const createSuccess = () => {
+  return {
+    body: [],
+    status: HTTP_CODES[201],
+    message: messageService.createSuccess(),
+  };
+};
+
+const createFail = () => {
+  return {
+    body: [],
+    status: HTTP_CODES[400],
+    message: messageService.createFail(),
+  };
+};
+
+const updateSuccess = (newCategory) => {
+  return {
+    body: newCategory,
+    status: HTTP_CODES[200],
+    message: messageService.updateSuccess(),
+  };
+};
+
+const updateFail = (newCategory) => {
+  return {
+    body: [],
+    status: HTTP_CODES[400],
+    message: messageService.updateFail(),
+  };
+};
+
+const deleteSuccess = () => {
+  return {
+    body: [],
+    status: HTTP_CODES[200],
+    message: messageService.deleteSuccess(),
+  };
+};
+
+const deleteFail = () => {
+  return {
+    body: [],
+    status: HTTP_CODES[400],
+    message: messageService.deleteFail(),
+  };
+};
+
+const categoryService = {
+  getListSuccess,
+  getOneSuccess,
+  notFound,
+  createSuccess,
+  createFail,
+  updateSuccess,
+  updateFail,
+  deleteSuccess,
+  deleteFail,
+};
+
+module.exports = categoryService;
