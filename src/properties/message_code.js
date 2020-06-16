@@ -1,0 +1,11 @@
+const SUCCESS_001 = {
+
+}
+const SUCCESS_002 = 'SUCCESS_002'
+
+const ERROR_001 = 'ERROR_001'
+const ERROR_002 = 'ERROR_002'
+
+const MESSAGE_CODES = { SUCCESS_001, SUCCESS_002, ERROR_001, ERROR_002 }
+
+module.exports = MESSAGE_CODES

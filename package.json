@@ -1,0 +1,25 @@
+{
+  "name": "pc_fav",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
+    "start": "node src/index.js",
+    "prod": "npm run build && npm run start",
+    "tsc": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.9.18"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "nodemon": "^2.0.4",
+    "prettier": "2.0.5"
+  }
+}
